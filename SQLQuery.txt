@@ -1,0 +1,63 @@
+﻿CREATE TABLE COMPANY
+(
+	CompanyID int IDENTITY(1,1) PRIMARY KEY,
+	Name varchar(20) NOT NULL,
+	Description varchar(50) NOT NULL,
+	Address varchar(40) NOT NULL,
+	Phone varchar(15) NOT NULL,
+	Email varchar(30) NOT NULL UNIQUE,
+	Password varchar(100) NOT NULL
+);
+
+CREATE TABLE USERS
+(
+	UserID int IDENTITY(1,1) PRIMARY KEY,
+	Name varchar(50) NOT NULL,
+	Email varchar(50) NOT NULL UNIQUE,
+	Phone varchar(50),
+	Address varchar(100),
+	Password varchar(100) NOT NULL,
+	University varchar(50), 
+	Description varchar(200),
+	Skill varchar(50),
+	CV varchar(100)
+)
+
+CREATE TABLE RECOMMENDATION
+(
+	RecommendationID int IDENTITY(1,1) PRIMARY KEY,
+	CompanyID int NOT NULL FOREIGN KEY REFERENCES COMPANY(CompanyID),
+	UserID int NOT NULL FOREIGN KEY REFERENCES Users(UserID),
+	Description varchar(50) NOT NULL,
+	RecommendationDate DATE NOT NULL
+);
+
+CREATE TABLE REVIEW
+(
+	ReviewID int IDENTITY(1,1) PRIMARY KEY,
+	UserID int NOT NULL FOREIGN KEY REFERENCES USERS(UserID),
+	CompanyID int NOT NULL FOREIGN KEY REFERENCES COMPANY(CompanyID),
+	ReviewDate DATE NOT NULL,
+	Description varchar(200) NOT NULL
+)
+
+CREATE TABLE POST
+(
+	PostID int IDENTITY(1,1) PRIMARY KEY,
+	CompanyID int NOT NULL FOREIGN KEY REFERENCES COMPANY(CompanyID),
+	Salary int NOT NULL Check(Salary>0),
+	Location varchar(50) NOT NULL,
+	Experience int NOT NULL Check(Experience>=0),
+	Description varchar(255) NOT NULL
+);
+
+CREATE TABLE APPLICATIONS(
+	ApplicationID int IDENTITY(1,1) PRIMARY KEY,
+	UserID int NOT NULL FOREIGN KEY REFERENCES Users(UserID),
+	PostID int NOT NULL FOREIGN KEY REFERENCES POST(PostID),
+	ApplicationDate DATE NOT NULL
+);
+
+
+
+
