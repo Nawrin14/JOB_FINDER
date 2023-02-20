@@ -1,6 +1,6 @@
 # JOB_FINDER
 
-A website where the companies will be able to post about their available job openings and the job finders will be able to apply for the jobs.
+A website where the companies will be able to post about their available job openings and the job finders will be able to apply for the jobs. The project details can be found [here](https://github.com/Nawrin14/JOB_FINDER/blob/master/Job%20Finder.pdf).
 
 # Description
 
